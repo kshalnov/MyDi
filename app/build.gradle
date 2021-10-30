@@ -38,6 +38,7 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':dildo')
     def room_version = "2.3.0"
 
     implementation "androidx.room:room-runtime:$room_version"

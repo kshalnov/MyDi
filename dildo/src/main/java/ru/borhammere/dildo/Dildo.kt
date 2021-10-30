@@ -1,4 +1,4 @@
-package ru.gb.course1.myapplication.di
+package ru.borhammere.dildo
 
 import android.content.Context
 import android.util.Log
@@ -6,7 +6,7 @@ import kotlin.reflect.KClass
 
 private const val TAG = "DI"
 
-object DI {
+object Dildo {
     const val DEFAULT_NAME = "default"
 
     private var dependenciesMap: Map<DependencyKey, Dependency>? = null
@@ -74,7 +74,7 @@ object DI {
     }
 }
 
-private fun Array<DI.Dependency>.asDependenciesMap(): MutableMap<DI.DependencyKey, DI.Dependency> =
+private fun Array<Dildo.Dependency>.asDependenciesMap(): MutableMap<Dildo.DependencyKey, Dildo.Dependency> =
     if (isNotEmpty()) {
         map { Pair(it.key, it) }.toMap(HashMap(size))
     } else {

@@ -7,9 +7,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import ru.borhammere.dildo.Dildo
 import ru.gb.course1.myapplication.R
 import ru.gb.course1.myapplication.databinding.ActivityMainBinding
-import ru.gb.course1.myapplication.di.DI
 import ru.gb.course1.myapplication.domain.NoteRepo
 import ru.gb.course1.myapplication.domain.entities.NoteEntity
 
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind)
     private val compositeDisposable = CompositeDisposable()
 
-    private val noteRepo: NoteRepo = DI.inject()
+    private val noteRepo: NoteRepo = Dildo.inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

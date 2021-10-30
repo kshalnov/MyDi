@@ -1,6 +1,9 @@
 package ru.gb.course1.myapplication.di
 
 import androidx.room.Room
+import ru.borhammere.dildo.Dildo
+import ru.borhammere.dildo.Dildo.inject
+import ru.borhammere.dildo.Dildo.singleton
 import ru.gb.course1.myapplication.data.NoteRepoCombinedImpl
 import ru.gb.course1.myapplication.data.NoteRepoWebImpl
 import ru.gb.course1.myapplication.data.room.NoteDao
@@ -8,27 +11,27 @@ import ru.gb.course1.myapplication.data.room.NoteDb
 import ru.gb.course1.myapplication.data.room.NoteRepoRoomImpl
 import ru.gb.course1.myapplication.domain.NoteRepo
 
-val dependencies = arrayOf<DI.Dependency>(
-    DI.singleton<NoteRepo> {
+val dependencies = arrayOf<Dildo.Dependency>(
+    singleton<NoteRepo> {
         NoteRepoCombinedImpl(
-            DI.inject("room"),
-            DI.inject("web")
+            inject("room"),
+            inject("web")
         )
     },
-    DI.singleton<NoteRepo>("web") {
+    singleton<NoteRepo>("web") {
         NoteRepoWebImpl()
     },
-    DI.singleton<NoteRepo>("room") {
-        NoteRepoRoomImpl(DI.inject())
+    singleton<NoteRepo>("room") {
+        NoteRepoRoomImpl(inject())
     },
-    DI.singleton<NoteDb> {
+    singleton<NoteDb> {
         Room.databaseBuilder(
-            DI.inject(),
+            inject(),
             NoteDb::class.java,
             "notes.db"
         ).build()
     },
-    DI.singleton<NoteDao> {
-        DI.inject<NoteDb>().noteDao()
+    singleton<NoteDao> {
+        inject<NoteDb>().noteDao()
     }
 )
