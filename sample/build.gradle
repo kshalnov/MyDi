@@ -8,13 +8,11 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "ru.gb.course1.myapplication"
+        applicationId "ru.borhammere.dildo.sample"
         minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -39,11 +37,12 @@ android {
 
 dependencies {
     implementation project(path: ':dildo')
-    def room_version = "2.3.0"
 
+    def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
+
     implementation "android.arch.persistence.room:rxjava2:1.1.1"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
@@ -53,7 +52,4 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

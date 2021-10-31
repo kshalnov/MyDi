@@ -11,6 +11,7 @@ object Dildo {
 
     private var dependenciesMap: Map<DependencyKey, Dependency>? = null
 
+    @Synchronized
     fun initialize(context: Context, dependenciesArray: Array<Dependency>) {
         if (dependenciesMap != null) throw IllegalStateException("You can't call DI.initialize twice")
 
