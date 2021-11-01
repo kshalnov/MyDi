@@ -1,5 +1,6 @@
 package ru.borhammere.dildo
 
+import android.content.ComponentCallbacks
 import android.content.Context
 import android.util.Log
 import kotlin.reflect.KClass
@@ -28,6 +29,10 @@ object Dildo {
     }
 
     inline fun <reified T> inject(name: String = DEFAULT_NAME): T = get(T::class, name) as T
+
+    inline fun <reified T> lazyInject(name: String = DEFAULT_NAME) = lazy(LazyThreadSafetyMode.NONE) {
+        get(T::class, name) as T
+    }
 
     internal data class DependencyKey(
         private val clazz: KClass<*>,
